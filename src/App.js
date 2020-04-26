@@ -40,10 +40,10 @@ export default function App() {
     <>
       <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
       <SafeAreaView style={styles.container}>
-        {/* {repositories.map(repository => (<View key={repository.id}><Text>{repository.title}</Text></View>))} */}
         <FlatList
           data={repositories}
-          keyExtractor={repository => repository.id}git 
+          keyExtractor={repository => repository.id}
+          renderItem={({item: repository}) => (
           <View key={repository.id} style={styles.repositoryContainer}>
             <Text style={styles.repository}>{repository.title}</Text>
 
@@ -58,7 +58,6 @@ export default function App() {
             <View style={styles.likesContainer}>
               <Text
                 style={styles.likeText}
-                // Remember to replace "1" below with repository ID: {`repository-likes-${repository.id}`}
                 testID={`repository-likes-${repository.id}`}
               >
                 {repository.likes} curtidas
@@ -67,7 +66,6 @@ export default function App() {
             <TouchableOpacity
               style={styles.button}
               onPress={() => handleLikeRepository(repository.id)}
-              // Remember to replace "1" below with repository ID: {`like-button-${repository.id}`}
               testID={`like-button-${repository.id}`}
             >
               <Text style={styles.buttonText}>Curtir</Text>
